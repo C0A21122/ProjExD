@@ -1,7 +1,6 @@
 import random
 
 #グローバル変数
-global lets, lost_chars, max_nums
 lets = 8 #文字数
 lost_chars = 2 #欠損文字数
 max_nums = 5 #最大繰り返し回数
@@ -15,9 +14,19 @@ def main():
 
 def shutudai():
     all_alphabet_list = [chr(i+65) for i in range(26)]
-    all_chars = random.sample(all_alphabet_list,lost_chars)
-    print("対象文字：\n"+str(all_chars))
-    #lost_alphabet = all_chars()
+    all_chars = random.sample(all_alphabet_list, lets)
+    print("対象文字：")
+    for i in all_alphabet_list:
+        print(i)
+    
+    print("\n欠損文字")
+    lost_alphabet = random.sample(all_alphabet_list, lost_chars)
+    for i in lost_alphabet:
+        print(i)
+    
+    print("\n表示文字")
+    
+
 
 def kaitou(seikai):
     answer = input("欠損文字はいくつあるでしょうか？：")
