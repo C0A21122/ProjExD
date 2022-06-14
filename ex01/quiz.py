@@ -8,7 +8,7 @@ if (x == 1):
     answer = input("答えを入力してください：")
     if (answer == "マスオ"):
         print("正解です！")
-    elif (answer == "ますお"): #マスオTVです。
+    elif (answer == "ますお"): 
         print("正解です！")
     else:
         print("不正解です")
@@ -36,3 +36,4 @@ if (x == 3):
         print("正解です！")
     else:
         print("不正解です")
+#関数を使うようにします。
