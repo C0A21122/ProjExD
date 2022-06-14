@@ -25,13 +25,20 @@ def shutudai():
         print(i)
     
     print("\n表示文字")
-    
+
 
 
 def kaitou(seikai):
     answer = input("欠損文字はいくつあるでしょうか？：")
     if (answer == lost_chars):
         print("正解です。それでは、具体的に欠損文字を1つずつ入力してください。")
+        for i in range(lost_chars):
+            ans = input("1つ目の文字を入力してください：")
+            if ans not in seikai:
+                print("不正解です。再チャレンジしましょう。")
+                return 0
+            else:
+                return 1
 
     else:
         print("不正解です。再チャレンジしましょう。")
