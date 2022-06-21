@@ -39,15 +39,15 @@ if __name__ == "__main__":
     button.grid(row=1, column=4)        #空いた位置に作成
     button.bind("<1>",button_click)     #"+"のクリック処理
 
-    button = tk.Button(root, text="-", font=("Times New Roman",30), width=4, height=2)  #"="ボタンの作成
+    button = tk.Button(root, text="-", font=("Times New Roman",30), width=4, height=2)  #"-"ボタンの作成
     button.grid(row=2, column=4)    
     button.bind("<1>",button_click)    #"-"のクリック処理
 
-    button = tk.Button(root, text="*", font=("Times New Roman",30), width=4, height=2)  #"="ボタンの作成
+    button = tk.Button(root, text="*", font=("Times New Roman",30), width=4, height=2)  #"*"ボタンの作成
     button.grid(row=3, column=4)     
     button.bind("<1>",button_click)    #"*"のクリック処理
 
-    button = tk.Button(root, text="/", font=("Times New Roman",30), width=4, height=2)  #"="ボタンの作成
+    button = tk.Button(root, text="/", font=("Times New Roman",30), width=4, height=2)  #"/"ボタンの作成
     button.grid(row=4, column=4)     
     button.bind("<1>",button_click)    #"/"のクリック処理
 
