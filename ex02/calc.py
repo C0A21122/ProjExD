@@ -18,7 +18,7 @@ def button_click(event):
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("calc")  #タイトル
-    #root.geometry("300x500")    #サイズ
+    #root.geometry("300x500")    
     #root.resizable(width = 500,height = 800)
 
     #ボタンクラス
