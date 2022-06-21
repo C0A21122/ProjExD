@@ -6,7 +6,6 @@ import tkinter.messagebox as tkm
 def button_click(event):
     btn = event.widget
     txt = btn["text"]
-    #tkm.showinfo(txt, f"[{txt}]ボタンが押されました")
     if txt == "=":
         A1 = entry.get()
         result = eval(A1)
@@ -23,7 +22,7 @@ if __name__ == "__main__":
     #root.resizable(width = 500,height = 800)
 
     #ボタンクラス
-    r, c = 1, 0
+    r, c = 1,0
     for i in range(9, -1, -1):
         button = tk.Button(root,        #0~9までのボタンを作成
                             text = f"{i}",
@@ -37,11 +36,25 @@ if __name__ == "__main__":
             r += 1
             c = 0
     button = tk.Button(root, text="+", font=("Times New Roman",30), width=4, height=2)  #"+"ボタンの作成
-    button.grid(row=r, column=c)        #空いた位置に作成
+    button.grid(row=1, column=4)        #空いた位置に作成
     button.bind("<1>",button_click)     #"+"のクリック処理
+
+    button = tk.Button(root, text="-", font=("Times New Roman",30), width=4, height=2)  #"="ボタンの作成
+    button.grid(row=2, column=4)    
+    button.bind("<1>",button_click)    #"-"のクリック処理
+
+    button = tk.Button(root, text="*", font=("Times New Roman",30), width=4, height=2)  #"="ボタンの作成
+    button.grid(row=3, column=4)     
+    button.bind("<1>",button_click)    #"*"のクリック処理
+
+    button = tk.Button(root, text="/", font=("Times New Roman",30), width=4, height=2)  #"="ボタンの作成
+    button.grid(row=4, column=4)     
+    button.bind("<1>",button_click)    #"/"のクリック処理
+
     button = tk.Button(root, text="=", font=("Times New Roman",30), width=4, height=2)  #"="ボタンの作成
-    button.grid(row=r, column=c+1)      #"+"の隣に作成
-    button.bind("<1>",button_click)     #"="のクリック処理
+    button.grid(row=r, column=c+1)     
+    button.bind("<1>",button_click)    #"="のクリック処理
+
 
 
 
