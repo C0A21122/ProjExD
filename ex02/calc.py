@@ -15,11 +15,6 @@ if __name__ == "__main__":
     #root.geometry("300x500")    #サイズ
     #root.resizable(width = 500,height = 800)
 
-    #ラベルクラス
-    """label = tk.Label(root,
-                
-    )"""
-
     #ボタンクラス
     r, c = 1, 0
     for i in range(9, -1, -1):
