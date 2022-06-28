@@ -6,14 +6,6 @@ def key_down(event):
     global key
     key = event.keysym
     main_proc()
-    restart()
- 
-def restart():  #リスタートする関数
-    if key == "r":  #Rキーが押されたら
-        choose = tkm.askokcancel("メッセージ", "やり直しますか？" )
-        #メッセージを表示して、OKボタンが押されたときだけ
-        if choose == True:
-            m_make()    #迷路をリセットする
 
 def key_up(event):
     global key
@@ -32,6 +24,12 @@ def main_proc():
     cx, cy = mx*100+50, my*100+50   #マス目を移動
     canvas.coords("tori", cx, cy) #座標の更新
     root.after(5000, main_proc)  #リアルタイム処理
+
+    if key == "r":  #Rキーが押されたら
+        choose = tkm.askokcancel("メッセージ", "やり直しますか？" )
+        #メッセージを表示して、OKボタンが押されたときだけ
+        if choose == True:
+            m_make()    #迷路をリセットする
 
 def m_make():
     global maze
