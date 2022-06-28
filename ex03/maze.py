@@ -11,18 +11,22 @@ def key_up(event):
     key = ""
 
 def main_proc():
-    global cx, cy
-    if key == "Up":     #上が押されたら
-        cy -= 20
-    elif key == "Down": #下が押されたら
-        cy += 20
-    elif key == "Left": #左が押されたら
-        cx -= 20
-    elif key == "Right":#右が押されたら
-        cx += 20
-    canvas.coords("tori", cx, cy) #座標の更新
-    root.after(1000, main_proc)  #リアルタイム処理
-
+    global mx, my
+    try:
+        if key == "Up" and maze[my-1][mx] ==0:#上が押されたら
+            my -= 1
+        elif key == "Down"and maze[my+1][mx] ==0: #下が押されたら
+            my += 1
+        elif key == "Left"and maze[my][mx-1] ==0: #左が押されたら
+            mx -= 1
+        elif key == "Right"and maze[my][mx+1] ==0:#右が押されたら
+            mx += 1
+        cx, cy = mx*100+50, my*100+50   #マス目を移動
+        canvas.coords("tori", cx, cy) #座標の更新
+        root.after(5000, main_proc)  #リアルタイム処理
+    except:
+        pass
+        
 if __name__ == "__main__":
     global key
     key = ""
@@ -48,10 +52,12 @@ if __name__ == "__main__":
     #PhotoImageクラス
     tori = tkinter.PhotoImage(file = "ex03/fig/3.png")
     cx, cy = 300, 400
+    mx, my = 1, 1
     canvas.create_image(cx, #x座標
                         cy, #y座標
                         image=tori, #画像
                         tag = "tori" #タグ
                         )
+
 
     root.mainloop()
