@@ -14,7 +14,6 @@ def restart():  #リスタートする関数
         #メッセージを表示して、OKボタンが押されたときだけ
         if choose == True:
             m_make()    #迷路をリセットする
-            draw_tori()
 
 def key_up(event):
     global key
