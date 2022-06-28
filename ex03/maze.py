@@ -1,6 +1,8 @@
 import tkinter
 
 if __name__ == "__main__":
+    global key
+    key = ""
     root = tkinter.Tk()
     root.title("迷えるこうかとん")
     
