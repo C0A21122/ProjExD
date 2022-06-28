@@ -29,13 +29,10 @@ def main_proc():
         choose = tkm.askokcancel("メッセージ", "やり直しますか？" )
         #メッセージを表示して、OKボタンが押されたときだけ
         if choose == True:
-            m_make()    #迷路をリセットする
-
-def m_make():
-    global maze
-    #迷路の生成
-    maze = maze_maker.make_maze(15, 9)
-    maze_maker.show_maze(canvas, maze)
+            #迷路をリセットする
+            #迷路の生成
+            maze = maze_maker.make_maze(15, 9)
+            maze_maker.show_maze(canvas, maze)
    
 if __name__ == "__main__":
     global key
@@ -55,7 +52,8 @@ if __name__ == "__main__":
                             )
     canvas.pack()
     
-    m_make()    #迷路の生成
+    maze = maze_maker.make_maze(15, 9)
+    maze_maker.show_maze(canvas, maze)
 
     #PhotoImageクラス
     tori = tkinter.PhotoImage(file = "ex03/fig/3.png")
