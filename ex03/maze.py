@@ -1,4 +1,5 @@
 import tkinter
+import maze_maker
 
 def key_down(event):
     global key
@@ -36,8 +37,13 @@ if __name__ == "__main__":
     canvas = tkinter.Canvas(root, 
                             width=1500, #幅
                             height=900, #高さ
-                            bg="BLACK"
-                            ) #背景色
+                            bg="BLACK"  #背景色
+                            ) 
+    canvas.pack()
+
+    #迷路の生成
+    maze = maze_maker.make_maze(15, 9)
+    maze_maker.show_maze(canvas, maze)
     
     #PhotoImageクラス
     tori = tkinter.PhotoImage(file = "ex03/fig/3.png")
@@ -47,6 +53,5 @@ if __name__ == "__main__":
                         image=tori, #画像
                         tag = "tori" #タグ
                         )
-    canvas.pack()
 
     root.mainloop()
