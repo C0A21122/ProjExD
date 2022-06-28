@@ -1,5 +1,9 @@
 import tkinter
 
+def key_down(event):
+    global key
+    key = event.keysym
+
 if __name__ == "__main__":
     global key
     key = ""
@@ -21,5 +25,8 @@ if __name__ == "__main__":
                         image=tori #画像
                         )
     canvas.pack()
+
+    #bindクラス
+    root.bind("<KeyPress>", key_down)
 
     root.mainloop()
