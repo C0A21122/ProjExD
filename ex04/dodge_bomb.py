@@ -1,3 +1,4 @@
+import random
 import pygame
 import sys
 
@@ -33,9 +34,26 @@ def main():
         if key_list[pygame.K_RIGHT] == True:#RIGHTキーのとき
             tori_rect.centerx += 1
         if key_list[pygame.K_LEFT] == True: #LEFTキーのとき
-            tori_rect.centerx -= 1
+            tori_rect.centerx -= 1 
         
-        screen.blit(tori_img, tori_rect)#こうかとんの貼り付け
+        screen.blit(tori_img, tori_rect)    #こうかとんの貼り付け
+        screen.blit(bomb_image, bomb_rect) #爆弾の貼り付け
+
+        #爆弾の作成
+        bomb_image = pygame.Surface((100,100))   #描画用surface(幅,高さ)を生成する
+                                                 #四角が生成される
+        pygame.draw.circle(bomb_image, (255, 0, 0),  #色
+                                     (50, 50),  #位置
+                                      10)       #半径
+        bomb_rect = bomb_image.get_rect()
+        bomb_rect.centerx = random.randint(0, screen_rect.width) #ウィンドウの外に出ない乱数
+        bomb_rect.centery = random.randint(0, screen_rect.height)
+        bomb_image.set_colorkey((0,0,0)) #黒色を透過
+
+        ##爆弾の移動
+        screen.blit(bomb_image, bomb_rect)
+        
+        
 
         pygame.display.update()
         clock.tick(1000)
