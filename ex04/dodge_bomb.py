@@ -105,11 +105,11 @@ def check_bound(rect, sc_rect): #rectはこうかとん、または爆弾  sc_re
 
 
 
-if __name__ == "__main__":
-    pygame.init()
-    pygame.font.init()
+if __name__ == "__main__":  
+    pygame.init()       #ゲームの開始
+    pygame.font.init()  #文字の初期か
     main()
-    game_over()
-    pygame.quit()
-    pygame.font.quit()
+    game_over()         #ゲームオーバー関数の呼び出し
+    pygame.quit()       #ゲーム終了
+    pygame.font.quit()  #文字列終わり
     sys.exit()
