@@ -7,6 +7,7 @@ def main():
     pygame.display.set_caption("逃げろ！こうかとん")    #ウィンドウの名前
     screen = pygame.display.set_mode((1600,900))       #ウィンドウ
     clock = pygame.time.Clock()
+    progress_time = pygame.time.get_ticks()*1000    #経過時間の取得
     screen_rect = screen.get_rect()
 
     #背景
@@ -41,7 +42,8 @@ def main():
                 return
         
         key_list = pygame.key.get_pressed() #辞書
-        #各キーを押したときの反応と領域外にでそうなとき
+        #各キーを押したときの反応
+        ##領域外にでそうなとき
         if key_list[pygame.K_UP] == True and tori_rect.centery != (screen_rect.top):   
             tori_rect.centery -= 1
         if key_list[pygame.K_DOWN] == True and tori_rect.centery != (screen_rect.bottom):  
@@ -65,10 +67,21 @@ def main():
             vx *= -1
         if bomb_rect.centery == (screen_rect.height+1) or bomb_rect.centery == (screen_rect.top):
             vy *= -1
+        
+        if progress_time % 5 == 0:
+            vx +=1
+            vy +=1
         screen.blit(bomb_image, bomb_rect)  #爆弾の貼り付け
-    
+
         pygame.display.update()
         clock.tick(1000)
+
+
+        #爆弾と接触したか
+        if pygame.Rect.colliderect(tori_rect, bomb_rect):
+            return
+    
+
 
 """
 def check_bound(rect, sc_rect): #rectはこうかとん、または爆弾  sc_rectはスクリーン
