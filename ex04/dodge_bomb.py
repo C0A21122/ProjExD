@@ -20,15 +20,25 @@ def main():
 
     while True:
         screen.blit(bg_iamge, bg_rect)  #背景の貼り付け
-        screen.blit(tori_img, tori_rect)#こうかとんの貼り付け
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         
+        key_list = pygame.key.get_pressed() #辞書
+        if key_list[pygame.K_UP] == True:   #UPキーのとき
+            tori_rect.centery -= 1
+        if key_list[pygame.K_DOWN] == True: #DOWNキーのとき
+            tori_rect.centery += 1
+        if key_list[pygame.K_RIGHT] == True:#RIGHTキーのとき
+            tori_rect.centerx += 1
+        if key_list[pygame.K_LEFT] == True: #LEFTキーのとき
+            tori_rect.centerx -= 1
+        
+        screen.blit(tori_img, tori_rect)#こうかとんの貼り付け
+
         pygame.display.update()
         clock.tick(1000)
-
 
 
 
