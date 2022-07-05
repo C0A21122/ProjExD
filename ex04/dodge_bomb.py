@@ -54,13 +54,13 @@ def main():
         key_list = pygame.key.get_pressed() #辞書
         #各キーを押したときの反応
         ##領域外にでそうなとき
-        if key_list[pygame.K_UP] == True and tori_rect.centery != (screen_rect.top):   
+        if key_list[pygame.K_UP] and tori_rect.centery != (screen_rect.top):   
             tori_rect.centery -= 1
-        if key_list[pygame.K_DOWN] == True and tori_rect.centery != (screen_rect.bottom):  
+        if key_list[pygame.K_DOWN] and tori_rect.centery != (screen_rect.bottom):  
             tori_rect.centery += 1
-        if key_list[pygame.K_RIGHT] == True and tori_rect.centerx != (screen_rect.right):
+        if key_list[pygame.K_RIGHT] and tori_rect.centerx != (screen_rect.right):
             tori_rect.centerx += 1
-        if key_list[pygame.K_LEFT] == True and tori_rect.centerx != (screen_rect.left): 
+        if key_list[pygame.K_LEFT] and tori_rect.centerx != (screen_rect.left): 
             tori_rect.centerx -= 1 
 
         """
