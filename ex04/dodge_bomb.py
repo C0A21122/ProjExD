@@ -42,10 +42,6 @@ def main():
         
         #生存時間の表示
         progress_time = pygame.time.get_ticks()/1000    #経過時間の取得
-        #fonto = pygame.font.Font(None, 80)              
-        #char = progress_time
-        #txt = fonto.render(str(char), True, (0,0,0))
-        #screen.blit(txt, (1450,10))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -63,10 +59,6 @@ def main():
         if key_list[pygame.K_LEFT] and tori_rect.centerx != (screen_rect.left): 
             tori_rect.centerx -= 1 
 
-        """
-        if check_bound(tori_rect, screen_rect) != (1, 1):
-            tori_rect.center
-        """
         screen.blit(tori_img, tori_rect)    #こうかとんの貼り付け
 
         ##爆弾の移動
@@ -90,18 +82,6 @@ def main():
 
 def game_over():    #接触した後
     tkm.showinfo("ゲームオーバー", f"生存時間{progress_time}秒")    #結果表示
-
-
-"""
-def check_bound(rect, sc_rect): #rectはこうかとん、または爆弾  sc_rectはスクリーン
-    varx, vary = +1, +1 #領域内
-
-    if rect.left < sc_rect.left or sc_rect.right < rect.right:  #横方向にはみ出たら
-        varx = -1
-    if rect.top < sc_rect.top or sc_rect.bottom < rect.bottom:  #縦方向にはみ出たら
-        vary = -1
-    return varx,vary
-"""
 
 
 
