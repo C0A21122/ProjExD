@@ -1,3 +1,4 @@
+
 import random
 import pygame
 import sys
@@ -40,22 +41,45 @@ def main():
                 return
         
         key_list = pygame.key.get_pressed() #辞書
-        if key_list[pygame.K_UP] == True:   #UPキーのとき
+        #各キーを押したときの反応と領域外にでそうなとき
+        if key_list[pygame.K_UP] == True and tori_rect.centery != (screen_rect.top):   
             tori_rect.centery -= 1
-        if key_list[pygame.K_DOWN] == True: #DOWNキーのとき
+        if key_list[pygame.K_DOWN] == True and tori_rect.centery != (screen_rect.bottom):  
             tori_rect.centery += 1
-        if key_list[pygame.K_RIGHT] == True:#RIGHTキーのとき
+        if key_list[pygame.K_RIGHT] == True and tori_rect.centerx != (screen_rect.right):
             tori_rect.centerx += 1
-        if key_list[pygame.K_LEFT] == True: #LEFTキーのとき
+        if key_list[pygame.K_LEFT] == True and tori_rect.centerx != (screen_rect.left): 
             tori_rect.centerx -= 1 
+
+        """
+        if check_bound(tori_rect, screen_rect) != (1, 1):
+            tori_rect.center
+        """
         screen.blit(tori_img, tori_rect)    #こうかとんの貼り付け
 
         ##爆弾の移動
         bomb_rect.move_ip(vx,vy)
+
+        #爆弾が領域外に行きそうなとき
+        if bomb_rect.centerx == (screen_rect.width+1) or bomb_rect.centerx == (screen_rect.left):
+            vx *= -1
+        if bomb_rect.centery == (screen_rect.height+1) or bomb_rect.centery == (screen_rect.top):
+            vy *= -1
         screen.blit(bomb_image, bomb_rect)  #爆弾の貼り付け
     
         pygame.display.update()
         clock.tick(1000)
+
+"""
+def check_bound(rect, sc_rect): #rectはこうかとん、または爆弾  sc_rectはスクリーン
+    varx, vary = +1, +1 #領域内
+
+    if rect.left < sc_rect.left or sc_rect.right < rect.right:  #横方向にはみ出たら
+        varx = -1
+    if rect.top < sc_rect.top or sc_rect.bottom < rect.bottom:  #縦方向にはみ出たら
+        vary = -1
+    return varx,vary
+"""
 
 
 
