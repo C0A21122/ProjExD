@@ -1,6 +1,9 @@
 import pygame as pg
 import sys
 import random
+import tkinter.messagebox as tkm
+
+TIME = 0
 
 class Screen():
     
@@ -49,11 +52,15 @@ class Bomb():
         self.rct.centerx = random.randint(0, scr.rct.width)
         self.rct.centery = random.randint(0, scr.rct.height)
         self.vx, self.vy = vxy
+        self.bomb_count = 1
     
     def blit(self, scr: Screen):
         scr.sfc.blit(self.sfc, self.rct)
 
     def update(self, scr: Screen):
+        if self.bomb_count >= 3:
+            self.blit()
+            self.bomb_count += 1
         self.rct.move_ip(self.vx, self.vy)
         yoko, tate = check_bound(self.rct, scr.rct)
         self.vx *= yoko
@@ -77,14 +84,19 @@ def main():
                 scr)
 
     while True:
+        global TIME
         scr.blit()
 
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
 
+        TIME += pg.time.get_ticks()*1000    #経過時間の取得
+
         kkt.upadate(scr)
         bm.update(scr)
+
+        
 
         if kkt.rct.colliderect(bm.rct):
             return 
@@ -92,21 +104,25 @@ def main():
         pg.display.update()
         clock.tick(1000)
 
-
 def check_bound(rct, scr_rct):
     '''
     [1] rct: こうかとん or 爆弾のRect
     [2] scr_rct: スクリーンのRect
     '''
     yoko, tate = +1, +1 # 領域内
-    if rct.left < scr_rct.left or scr_rct.right  < rct.right : yoko = -1 # 領域外
-    if rct.top  < scr_rct.top  or scr_rct.bottom < rct.bottom: tate = -1 # 領域外
+    if rct.left < scr_rct.left or scr_rct.right  < rct.right :
+        yoko = -1 # 領域外
+    if rct.top  < scr_rct.top  or scr_rct.bottom < rct.bottom:
+        tate = -1 # 領域外
     return yoko, tate
 
+def game_over():
+    tkm.showinfo("ゲームオーバー", f"生存時間{TIME*1000}秒")    #結果表示
 
 
 if __name__ == "__main__":
     pg.init()
     main()
+    game_over()
     pg.quit()
     sys.exit()
