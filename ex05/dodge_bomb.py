@@ -70,7 +70,7 @@ class Bomb():
 def main():
     clock = pg.time.Clock()
 
-    scr = Screen("逃げろ！こうかとん",
+    scr = Screen("たたかえ！こうかとん",
                 (1600, 900),
                 "ex04/fig/pg_bg.jpg")
 
