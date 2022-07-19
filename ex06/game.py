@@ -86,7 +86,6 @@ def main():
     
     while True:
 
-        scr.blit()
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
