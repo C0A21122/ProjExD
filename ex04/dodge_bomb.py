@@ -35,8 +35,6 @@ def main():
     bomb_rect.centery = random.randint(0, screen_rect.height)
     bomb_image.set_colorkey((0,0,0)) #黒色を透過
 
-   
-
     while True:
         screen.blit(bg_iamge, bg_rect)  #背景の貼り付け
         
