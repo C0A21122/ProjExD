@@ -104,6 +104,7 @@ def check_bound(rct, scr_rct):
         tate = -1 # 領域外
     return yoko, tate
 
+
 if __name__ == "__main__":
     pg.init()       #ゲームの開始
     main()
