@@ -177,7 +177,7 @@ def main():
         if key_states[pg.K_s]:  #キー(s)を押したらスタート
             a = 1
         
-        if a == 1:  #ゲームの作動可否
+        if a == 1:  #ゲームの動作可否
             ball.update(scr)
 
         if bou.rct.colliderect(ball.rct): #ボールが棒に当たったら反射する関数を呼び出す
